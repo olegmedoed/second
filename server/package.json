@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "typecheck": "rm -rf dist && tsc --noEmit --pretty",
+    "prestart": "rm -rf dist && tsc",
+    "start": "node dist",
+    "prestart:dev": "rm -rf dist && tsc -w --pretty > typecheck.log &",
+    "start:dev": "nodemon -r source-map-support/register dist",
+    "precommit": "lint-staged"
+  },
   "dependencies": {
     "fastify": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1",
+    "typescript": "^2.7.2"
   }
 }
